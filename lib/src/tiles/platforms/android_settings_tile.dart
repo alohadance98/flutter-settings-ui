@@ -14,6 +14,7 @@ class AndroidSettingsTile extends StatelessWidget {
     required this.activeSwitchColor,
     required this.enabled,
     required this.trailing,
+    required this.padding,
     Key? key,
   }) : super(key: key);
 
@@ -28,6 +29,7 @@ class AndroidSettingsTile extends StatelessWidget {
   final bool enabled;
   final Color? activeSwitchColor;
   final Widget? trailing;
+  final EdgeInsetsDirectional? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -69,12 +71,13 @@ class AndroidSettingsTile extends StatelessWidget {
                   ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      start: 24,
-                      end: 24,
-                      bottom: 10,
-                      top: 10,
-                    ),
+                    padding: padding ??
+                        EdgeInsetsDirectional.only(
+                          start: 24,
+                          end: 24,
+                          bottom: 10,
+                          top: 10,
+                        ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

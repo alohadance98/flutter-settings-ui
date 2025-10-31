@@ -33,6 +33,7 @@ class SettingsTile extends AbstractSettingsTile {
     this.description,
     this.onPressed,
     this.enabled = true,
+    this.padding,
     Key? key,
   }) : super(key: key) {
     onToggle = null;
@@ -78,6 +79,7 @@ class SettingsTile extends AbstractSettingsTile {
   late final SettingsTileType tileType;
   late final bool? initialValue;
   late final bool enabled;
+  late final EdgeInsetsDirectional? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +101,7 @@ class SettingsTile extends AbstractSettingsTile {
           activeSwitchColor: activeSwitchColor,
           initialValue: initialValue ?? false,
           trailing: trailing,
+          padding: padding,
         );
       case DevicePlatform.iOS:
       case DevicePlatform.macOS:
