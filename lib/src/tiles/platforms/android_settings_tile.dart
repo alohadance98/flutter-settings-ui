@@ -32,7 +32,6 @@ class AndroidSettingsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = SettingsTheme.of(context);
-    final scaleFactor = MediaQuery.of(context).textScaleFactor;
 
     final cantShowAnimation = tileType == SettingsTileType.switchTile
         ? onToggle == null && onPressed == null
@@ -73,8 +72,8 @@ class AndroidSettingsTile extends StatelessWidget {
                     padding: EdgeInsetsDirectional.only(
                       start: 24,
                       end: 24,
-                      bottom: 19 * scaleFactor,
-                      top: 19 * scaleFactor,
+                      bottom: 10,
+                      top: 10,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
