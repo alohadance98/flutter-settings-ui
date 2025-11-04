@@ -119,39 +119,28 @@ class AndroidSettingsTile extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (trailing != null && tileType == SettingsTileType.switchTile)
-                  Row(
-                    children: [
-                      trailing!,
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(end: 8),
-                        child: Switch(
-                          value: initialValue,
-                          onChanged: onToggle,
-                          activeColor: enabled
-                              ? activeSwitchColor
-                              : theme.themeData.inactiveTitleColor,
-                        ),
-                      ),
-                    ],
+                // if (tileType == SettingsTileType.switchTile)
+                //   SizedBox(
+                //     height: 30,
+                //     child: VerticalDivider(),
+                //   ),
+                if (trailing != null)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: trailing!,
                   )
                 else if (tileType == SettingsTileType.switchTile)
                   Padding(
                     padding:
                         const EdgeInsetsDirectional.only(start: 16, end: 8),
-                    child: Switch(
+                    child: Switch.adaptive(
                       value: initialValue,
                       onChanged: onToggle,
                       activeColor: enabled
                           ? activeSwitchColor
                           : theme.themeData.inactiveTitleColor,
                     ),
-                  )
-                else if (trailing != null)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: trailing!,
-                  )
+                  ),
               ],
             ),
           ),

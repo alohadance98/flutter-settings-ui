@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -68,8 +71,7 @@ class _IOSSettingsTileState extends State<IOSSettingsTile> {
     required IOSSettingsTileAdditionalInfo additionalInfo,
   }) {
     Widget content = buildTileContent(context, theme, additionalInfo);
-    DevicePlatform platform = PlatformUtils.detectPlatform(context);
-    if (platform != DevicePlatform.iOS) {
+    if (kIsWeb || !Platform.isIOS) {
       content = Material(
         color: Colors.transparent,
         child: content,
@@ -121,11 +123,19 @@ class _IOSSettingsTileState extends State<IOSSettingsTile> {
     required BuildContext context,
     required SettingsTheme theme,
   }) {
+    if (widget.trailing != null) return widget.trailing!;
+
+    if (widget.tileType == SettingsTileType.simpleTile) {
+      if (widget.value == null) {
+        return Container();
+      }
+      return widget.value!;
+    }
+
     final scaleFactor = MediaQuery.of(context).textScaleFactor;
 
     return Row(
       children: [
-        if (widget.trailing != null) widget.trailing!,
         if (widget.tileType == SettingsTileType.switchTile)
           CupertinoSwitch(
             value: widget.initialValue ?? true,

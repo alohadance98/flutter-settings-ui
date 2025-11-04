@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:settings_ui/src/tiles/abstract_settings_tile.dart';
+import 'package:settings_ui/src/utils/settings_theme.dart';
 
 class WebSettingsSection extends StatelessWidget {
   const WebSettingsSection({
@@ -44,8 +46,6 @@ class WebSettingsSection extends StatelessWidget {
               ),
             ),
           Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 4,
             color: theme.themeData.settingsSectionBackground,
             child: buildTileList(),
